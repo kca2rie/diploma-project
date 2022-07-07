@@ -1,0 +1,11 @@
+{% extends 'exchange/base.html' %}
+{% block content %}
+<div class="center">
+    <h1>Обмен валюты по интернету</h1>
+    <p>Не переплачивайте за обмен валюты. Воспользуйтесь онлайн-калькулятором валют Currency-Exchange и покупайте USD и EUR по благоприятному курсу в реальном времени.</p>
+    <p>Этой услугой могут пользоваться только клиенты Currency-Exchange. Откройте счёт Currency-Exchange уже сегодня и обменяйте валюту за несколько секунд! </p>
+    <form action="{% url 'loginuser' %}" class="center">
+        <button class="btn">Начать</button>
+    </form>
+</div>
+{% endblock %}

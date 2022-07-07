@@ -1,0 +1,14 @@
+{% extends 'exchange/base.html' %}
+{% block content %}
+<div class="content">
+    <div class="wrap">
+        <h1>Авторизация</h1>
+        <h2>{{ error }}</h2>
+        <form method="post" class="bg">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="center"><button class="btn">Авторизация</button></div>
+        </form>
+    </div>
+</div>
+{% endblock %}

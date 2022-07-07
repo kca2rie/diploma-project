@@ -1,0 +1,67 @@
+{% extends 'exchange/base.html' %}
+{% block content %}
+    {% if currency|length > 0%}
+
+    <table class="rate">
+        <thead>
+        <tr>
+            <th>title</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for currency in currency %}
+        <tr>
+            <td>{{ currency.title }}</td>
+            <td>{{ currency.price }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <table class="my_wallet">
+        <thead>
+        <tr>
+            <th>amount</th>
+            <th>currency</th>
+            <th>wallet id</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for wallet in wallets %}
+        <tr>
+            <td>{{ wallet.amount }}</td>
+            <td>{{ wallet.currency.title }}</td>
+            <td>{{ wallet.wallet_id }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+<div class="content">
+    <form action="{% url 'mainpage' %}" method="POST" name="mainpage">
+        {% csrf_token %}
+        {{ form }}
+        <select name="currency_from" class="form-control">
+            <option selected disabled>Из</option>
+            {% for currency in currency %}
+            <option value="{{ currency.id }}">{{ currency.title }}</option>
+            {% endfor %}
+        </select>
+
+        <select name="currency_to" class="form-control">
+            <option selected disabled>В</option>
+            {% for currency in currency %}
+            <option value="{{ currency.id }}">{{ currency.title }}</option>
+            {% endfor %}
+        </select>
+<!--        <button class="btn">Перевести</button>-->
+        <input class="btn" formmethod="POST" type="submit" value="Перевести">
+    </form>
+</div>
+{% endblock %}
+
+
+
+
